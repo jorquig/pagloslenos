@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-carbon-950 text-crema font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    font-optical-sizing: auto;
+  }
+
+  /* Tipografía de display con carácter */
+  .font-display {
+    font-variation-settings: 'SOFT' 0, 'WONK' 0;
+  }
+
+  ::selection {
+    background: rgba(224, 112, 47, 0.3);
+    color: #fff;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer components {
+  /* ---------- Botones ---------- */
+  /* Botones editoriales: rectos, planos, en versalita con tracking.
+     Sin gradiente ni glow. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-none px-7 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 select-none;
+  }
+  .btn-ember {
+    @apply btn bg-ember text-crema-light;
+    border: 1px solid #b6501f;
+  }
+  .btn-ember:hover {
+    @apply bg-ember-dark;
+  }
+  .btn-outline {
+    @apply btn bg-transparent text-crema;
+    border: 1px solid rgba(241, 229, 208, 0.38);
+  }
+  .btn-outline:hover {
+    @apply bg-crema text-carbon-950;
+    border-color: #f1e5d0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-crema-muted transition-colors hover:text-crema;
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .seccion {
+    @apply wrap py-20 sm:py-28;
+  }
+
+  /* Etiqueta pequeña tipo "kicker" */
+  .kicker {
+    @apply inline-flex items-center gap-2.5 text-[0.7rem] font-semibold uppercase tracking-label text-ember-glow font-body;
+  }
+  .kicker::before {
+    content: '';
+    @apply inline-block h-px w-7 bg-ember/70;
+  }
+
+  .titulo {
+    @apply font-display font-semibold leading-[0.95] text-crema-light;
+    letter-spacing: -0.02em;
+  }
+
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 162, 74, 0.6), transparent);
+  }
+
+  /* Tarjeta de vidrio cálido */
+  .card {
+    @apply rounded-2xl border bg-carbon-800/70 backdrop-blur-sm;
+    border-color: rgba(241, 229, 208, 0.08);
+  }
+
+  .input {
+    @apply w-full rounded-xl border bg-carbon-900/80 px-4 py-3.5 text-crema placeholder:text-crema-muted/50 transition-colors focus:outline-none;
+    border-color: rgba(241, 229, 208, 0.14);
+  }
+  .input:focus {
+    border-color: rgba(224, 112, 47, 0.6);
+    box-shadow: 0 0 0 3px rgba(224, 112, 47, 0.12);
+  }
+
+  /* Imagen con marco (placeholder de foto real) */
+  .foto-frame {
+    @apply relative overflow-hidden rounded-2xl;
+    box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.75);
+  }
+  .foto-frame img {
+    @apply h-full w-full object-cover;
+  }
+}
+
+@layer utilities {
+  /* Degradés de superposición sobre fotos */
+  .veil-bottom {
+    background: linear-gradient(180deg, transparent 35%, rgba(16, 11, 9, 0.55) 70%, #100b09 100%);
+  }
+  .veil-dark {
+    background: linear-gradient(180deg, rgba(16, 11, 9, 0.72) 0%, rgba(16, 11, 9, 0.55) 45%, rgba(16, 11, 9, 0.85) 100%);
+  }
+  .veil-side {
+    background: linear-gradient(90deg, rgba(16, 11, 9, 0.9) 0%, rgba(16, 11, 9, 0.5) 45%, transparent 100%);
+  }
+  .text-shadow-soft {
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Reveal al hacer scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 {
+    transition-delay: 0.1s;
+  }
+  .reveal-delay-2 {
+    transition-delay: 0.2s;
+  }
+  .reveal-delay-3 {
+    transition-delay: 0.3s;
+  }
+}
+
+/* Grano de película para textura (se ve "hecho a mano") */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-kenburns,
+  .animate-floaty,
+  .animate-emberpulse {
+    animation: none !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #17100d;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a2d24;
+  border-radius: 999px;
+  border: 2px solid #17100d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4b3a2e;
+}

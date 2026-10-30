@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+*.local
+
+# Config local de Claude Code / editor (no va al repo del sitio)
+.claude/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+.vercel
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
