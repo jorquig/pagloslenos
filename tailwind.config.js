@@ -35,7 +35,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         body: ['Figtree', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {

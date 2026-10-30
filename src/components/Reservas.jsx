@@ -51,8 +51,8 @@ export default function Reservas() {
   return (
     <section id="reservas" className="seccion">
       <div className="overflow-hidden rounded-3xl border border-white/8 bg-carbon-800/70 lg:grid lg:grid-cols-2">
-        {/* Imagen de ambiente */}
-        <div className="relative hidden min-h-[520px] lg:block">
+        {/* Imagen de ambiente (entra con zoom + fundido) */}
+        <Reveal variant="img" className="relative hidden min-h-[520px] lg:block">
           {/* [FOTO DEL LOCAL] salón / ambiente — reemplazar /img/ambiente.jpg */}
           <img
             src={imagenes.ambiente}
@@ -69,7 +69,7 @@ export default function Reservas() {
               Ambiente familiar, para turistas y para los de siempre.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Formulario */}
         <div className="p-6 sm:p-10">

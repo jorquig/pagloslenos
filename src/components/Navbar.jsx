@@ -30,13 +30,11 @@ export default function Navbar() {
       }
     >
       <nav className="wrap h-16 flex items-center justify-between">
-        <a href="#inicio" className="group flex items-center gap-2.5">
-          <span className="text-ember-glow transition-transform group-hover:scale-110">
-            <Icon name="fire" className="h-6 w-6" />
-          </span>
-          <span className="font-display text-[1.5rem] leading-none text-crema-light">
-            Los Leños
-          </span>
+        <a
+          href="#inicio"
+          className="font-display text-xl uppercase tracking-[0.22em] text-crema-light transition-colors hover:text-crema"
+        >
+          Los Leños
         </a>
 
         <ul className="hidden md:flex items-center gap-8 text-[0.8rem] font-semibold uppercase tracking-wider text-crema-muted">

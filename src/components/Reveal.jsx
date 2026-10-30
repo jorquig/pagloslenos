@@ -1,8 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 
-// Envuelve contenido y lo anima (fade + slide) cuando entra en viewport.
-// `as` permite elegir el tag; `delay` 0–3 agrega un pequeño escalonado.
-export default function Reveal({ as: Tag = 'div', delay = 0, className = '', children, ...rest }) {
+// Envuelve contenido y lo anima cuando entra en viewport.
+// `as` elige el tag; `delay` 0–3 escalona; `variant`:
+//   'text' (por defecto) → fade + slide del contenido
+//   'img'  → la imagen interna entra con zoom + fundido
+export default function Reveal({
+  as: Tag = 'div',
+  delay = 0,
+  variant = 'text',
+  className = '',
+  children,
+  ...rest
+}) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -18,17 +27,18 @@ export default function Reveal({ as: Tag = 'div', delay = 0, className = '', chi
           }
         })
       },
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
     )
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
 
-  const delayClass = delay ? ` reveal-delay-${delay}` : ''
+  const base = variant === 'img' ? 'img-reveal' : 'reveal'
+  const delayClass = delay && variant !== 'img' ? ` reveal-delay-${delay}` : ''
   return (
     <Tag
       ref={ref}
-      className={`reveal${visible ? ' is-visible' : ''}${delayClass} ${className}`}
+      className={`${base}${visible ? ' is-visible' : ''}${delayClass} ${className}`}
       {...rest}
     >
       {children}

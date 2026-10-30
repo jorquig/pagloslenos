@@ -65,9 +65,9 @@ export default function Carta() {
             >
               {/* Foto (llega al borde de la pantalla) */}
               <Reveal
+                variant="img"
                 className={
-                  'relative h-72 overflow-hidden sm:h-96 lg:h-auto ' +
-                  (imgLeft ? 'lg:order-1' : 'lg:order-2')
+                  'relative h-72 sm:h-96 lg:h-auto ' + (imgLeft ? 'lg:order-1' : 'lg:order-2')
                 }
               >
                 {/* [FOTO DEL LOCAL] foto de la categoría — reemplazar */}
@@ -75,12 +75,9 @@ export default function Carta() {
                   src={imagenCategoria[categoria]}
                   alt={categoria}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-soft hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-carbon-950/70 via-transparent to-transparent" />
-                <span className="absolute left-6 top-5 text-[11px] uppercase tracking-label text-crema/70">
-                  Los Leños · a la leña
-                </span>
               </Reveal>
 
               {/* Platos */}

@@ -332,6 +332,9 @@ export const imagenCategoria = {
 // ----------------------------------------------------------------------------
 //  TEXTOS EDITORIALES  (editar libremente)
 // ----------------------------------------------------------------------------
+// Título grande del inicio (dos líneas). Frase evocativa, no el nombre del local.
+export const heroTitulo = ['La brasa', 'del norte']
+
 export const manifiesto =
   'Prendemos el fuego temprano. Elegimos la leña, esperamos la brasa justa y dejamos que el tiempo haga lo suyo. Acá no hay apuro con el sabor: hay asado jujeño hecho como se debe.'
 

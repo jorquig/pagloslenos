@@ -18,12 +18,6 @@
   h3,
   h4 {
     @apply font-display;
-    font-optical-sizing: auto;
-  }
-
-  /* Tipografía de display con carácter */
-  .font-display {
-    font-variation-settings: 'SOFT' 0, 'WONK' 0;
   }
 
   ::selection {
@@ -129,12 +123,12 @@
     text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
   }
 
-  /* Reveal al hacer scroll */
+  /* Reveal de texto al hacer scroll */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(46px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
   }
   .reveal.is-visible {
@@ -142,13 +136,29 @@
     transform: none;
   }
   .reveal-delay-1 {
-    transition-delay: 0.1s;
+    transition-delay: 0.12s;
   }
   .reveal-delay-2 {
-    transition-delay: 0.2s;
+    transition-delay: 0.24s;
   }
   .reveal-delay-3 {
-    transition-delay: 0.3s;
+    transition-delay: 0.36s;
+  }
+
+  /* Imagen que entra con zoom + fundido al aparecer en pantalla */
+  .img-reveal {
+    overflow: hidden;
+  }
+  .img-reveal img {
+    opacity: 0;
+    transform: scale(1.2);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .img-reveal.is-visible img {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -167,7 +177,8 @@
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .img-reveal img {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
